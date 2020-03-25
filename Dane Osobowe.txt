@@ -1,6 +1,6 @@
-imie:Tomasz
-nazwisko:Nie
-numer albumu:232228
-e-mail:232228@edu.p.lodz.pl
-tryb studiów:niestacjonarne 
-grupa:2AiSR L1
+imie: Tomasz
+nazwisko: Nie
+numer albumu: 232228
+e-mail: 232228@edu.p.lodz.pl
+tryb studiów: niestacjonarne 
+grupa: 2AiSR L1
