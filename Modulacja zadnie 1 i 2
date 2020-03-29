@@ -1,0 +1,88 @@
+#include <iostream>
+#include <stdio.h>
+
+void swap(int* a, int* b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void swap_tab(int* tab_1, int* tab_2, int ilosc_elementow_do_zamiany = 1)
+{
+    for (int i = 0; i <= ilosc_elementow_do_zamiany; i++)
+    {
+        int temp = tab_1[i];
+        tab_1[i] = tab_2[i];
+        tab_2[i] = temp;
+    }
+}
+void swap_tab_wsk(int* tab_1, int* tab_2, int ilosc_elementow_do_zamiany = 1)
+{
+    for (int i = 0; i <= ilosc_elementow_do_zamiany; i++)
+    {
+        int temp = *(tab_1 + i);
+        *(tab_1 + i) = *(tab_2 + i);
+        *(tab_2 + i) = temp;
+    }
+}
+
+void wyswietl_tab(int* tab)
+{
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%d ", tab[i]);
+    }
+}
+
+int main(void)
+{
+    setlocale(LC_ALL, "pl_PL");
+    int a = 2, b = 5;
+    printf_s("Program ten sluzy do testowania funkcji swap()\n");
+    printf_s("Zawartosc zmiennych przed wywołaniem funkcji swap()\n");
+    printf_s("a = %d\n", a);
+    printf_s("b = %d\n", b);
+    printf_s("\n");
+    swap(&a, &b);
+    printf_s("Zawartosc zmiennych po wywołanu funkcji swap()\n");
+    printf_s("a = %d\n", a);
+    printf_s("b = %d\n", b);
+
+    int tab_a[5] = { 2,4,6,8,10 };
+    int tab_b[5] = { 3,5,9,15,22 };
+
+    printf_s("Program ten sluzy do testowania funkcji swap_tab\n");
+    printf("\n");
+
+    printf("Wartosci w tablicach przed wywolaniem swap_tab:\n");
+    wyswietl_tab(tab_a);
+    printf(" - Tab a \n");
+    wyswietl_tab(tab_b);
+    printf(" - Tab b \n");
+
+    printf("Teraz wywołanie swap_tab\n");
+    swap_tab(tab_a, tab_b, 3);
+    printf("Po wywołaniu swap_tab\n");
+
+    printf("Wartosci w tablicach po wywolaniu swap_tab:\n");
+    wyswietl_tab(tab_a);
+    printf(" - Tab a \n");
+    wyswietl_tab(tab_b);
+    printf(" - Tab b \n");
+
+    printf("Wartosci w tablicach przed wywolaniem swap_tab_wsk:\n");
+    wyswietl_tab(tab_a);
+    printf(" - Tab a \n");
+    wyswietl_tab(tab_b);
+    printf(" - Tab b \n");
+
+    printf("Teraz wywołanie swap_tab_wsk\n");
+    swap_tab_wsk(tab_a, tab_b, 4);
+    printf("Wartosci w tablicach po wywolaniu swap_tab:\n");
+    wyswietl_tab(tab_a);
+    printf(" - Tab a \n");
+    wyswietl_tab(tab_b);
+    printf(" - Tab b \n");
+
+    return 0;
+}
