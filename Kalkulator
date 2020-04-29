@@ -1,4 +1,5 @@
-
+// ConsoleApplication19.cpp : Ten plik zawiera funkcję „main”. W nim rozpoczyna się i kończy wykonywanie programu.
+//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,148 +12,60 @@
 #include <string>
 #include <iostream>
 #include <stdio.h>
-
- 
-
-void dodawanie()
+float x, y;
+int wybor;
+float suma, roznica, iloraz, iloczyn;
+int main()
 {
-    int a;
-    int b;
-    int wynik;
-    printf_s("Wprowadz liczby:\n");
-    scanf_s("%d\n %d", &a, &b);
-    wynik = a + b;
-    printf_s("Twoj wynik to:%d\n", wynik);
+    printf("Wprowadz 1 liczbe:\n"); scanf_s("%f", &x);
+    printf("Wprowadz 2 liczbe:\n"); scanf_s("%f", &y);
+    
 
- 
+    printf("MENU KALKULATORA\n");
 
-}
+    printf("----------------\n");
+    printf("1-Dodawanie\n");
+    printf("2-Odejmowanie\n");
+    printf("3-Mnozenie\n");
+    printf("4-Dzielenie\n");
 
- 
+    printf("Jakie dzialanie chcesz wykonac?\n"); scanf_s("%d", &wybor);
+    
 
-void odejmowanie()
-{
-    int a;
-    int b;
-    int wynik;
-    printf_s("Wprowadz liczby:\n");
-    scanf_s("%d\n %d", &a, &b);
-    wynik = a - b;
-    printf_s("Twoj wynik to:%d\n", wynik);
-
- 
-
-}
-void mnozenie()
-{
-    int a;
-    int b;
-    int wynik;
-    printf_s("Wprowadz liczby:\n");
-    scanf_s("%d\n %d", &a, &b);
-    wynik = a * b;
-    printf_s("Twoj wynik to:%d\n", wynik);
-
- 
-
-}
-void dzielenie()
-{
-
- 
-
-    float a;
-    float b;
-
- 
-
-    float wynik;
-    printf_s("Wprowadz liczby:\n");
-    scanf_s("%f\n %f", &a, &b);
-    wynik = a / b;
-    printf_s("Twoj wynik to:%.2f\n", wynik);
-
- 
-
-}
-
- 
-
-
-void menu()
-{
-
- 
-
-    printf_s("\n");
-    printf_s("Wybierz dzialanie jakie chcesz wykonac\n");
-    printf_s("1-Dodawanie\n");
-    printf_s("2-Odejmowanie\n");
-    printf_s("3-Mnozenie\n");
-    printf_s("4-Dzielenie\n");
-    printf_s("5-Koniec programu\n");
-}
-
- 
-
- 
-
-
-int main(void)
-{
-    char opcja = 0;
-    while (opcja != '5')
+    switch (wybor)
     {
-        menu();
-        opcja = _getch();
-        switch (opcja)
-        {
-        case '1':
-            dodawanie();
-            break;
+        case 1:
+            suma = x + y;
+        printf("Wynik dodawania to: %f", suma);
+        break;
+    
+        case 2:
+            roznica = x - y;
+        printf("wynik odejmowania to: %f", roznica);
+        break; 
+        case 3:
+            iloraz = x * y;
+        printf("Wynik Mnozenia to: %f", iloraz);
+        break; 
+        case 4:
+            iloczyn = x / y;
+            if (y==0)
+            {
+                printf("Nie dzielimy przez 0!");
+            }
+            else
+        printf("Wynik dzielenia to: %f", iloczyn);
+        break; 
 
- 
-
-        case '2':
-            odejmowanie();
-            break;
-
- 
-
-        case '3':
-            mnozenie();
-            break;
-
- 
-
-        case '4':
-            dzielenie();
-            break;
-        case '5':
-
- 
-
-            break;
-
- 
-
-        default:
-            printf_s("\n \n Wybierz poprawna opcje\n \n ");
-            break;
-        }
+    default: printf("Takiej opcji nie ma w MENU");
+        break;
     }
-
- 
 
     return 0;
 }
 
- 
-
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
 // Debugowanie programu: F5 lub menu Debugowanie > Rozpocznij debugowanie
-
- 
 
 // Porady dotyczące rozpoczynania pracy:
 //   1. Użyj okna Eksploratora rozwiązań, aby dodać pliki i zarządzać nimi
