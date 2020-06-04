@@ -1,0 +1,68 @@
+#include <iostream>
+
+using namespace std;
+float x, y;
+int wybor;
+float suma, roznica, iloraz, iloczyn;
+int main()
+{
+    cout << "Wprowadz 1 liczbe:\n"; cin >> x;
+    cout << "Wprowadz 2 liczbe:\n"; cin >> y;
+
+
+    cout << "MENU KALKULATORA\n";
+
+    cout << "----------------\n";
+    cout << "1-Dodawanie\n";
+    cout << "2-Odejmowanie\n";
+    cout << "3-Mnozenie\n";
+    cout << "4-Dzielenie\n";
+
+    cout << "Jakie dzialanie chcesz wykonac?\n"; cin >> wybor;
+
+
+    switch (wybor)
+    {
+    case 1:
+        
+        cout << "Suma= " << x + y;
+        break;
+
+    case 2:
+        
+        cout << " Róznica = " << x - y;
+        break;
+    case 3:
+        
+        cout << "Iloczyn= " << x * y;
+        break;
+    case 4:
+        
+        if (y == 0)
+        {
+            cout << "Nie dzielimy przez 0!";
+        }
+        else
+            cout << "Iloraz= " << x / y;
+        break;
+
+    default: cout << "Takiej opcji nie ma w MENU";
+        break;
+    }
+
+    return 0;
+}
+
+// Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
+// Debugowanie programu: F5 lub menu Debugowanie > Rozpocznij debugowanie
+
+// Porady dotyczące rozpoczynania pracy:
+//   1. Użyj okna Eksploratora rozwiązań, aby dodać pliki i zarządzać nimi
+//   2. Użyj okna programu Team Explorer, aby nawiązać połączenie z kontrolą źródła
+//   3. Użyj okna Dane wyjściowe, aby sprawdzić dane wyjściowe kompilacji i inne komunikaty
+//   4. Użyj okna Lista błędów, aby zobaczyć błędy
+//   5. Wybierz pozycję Projekt > Dodaj nowy element, aby utworzyć nowe pliki kodu, lub wybierz pozycję Projekt > Dodaj istniejący element, aby dodać istniejące pliku kodu do projektu
+//   6. Aby w przyszłości ponownie otworzyć ten projekt, przejdź do pozycji Plik > Otwórz > Projekt i wybierz plik sln
+
+
+
