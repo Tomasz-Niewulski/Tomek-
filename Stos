@@ -1,0 +1,147 @@
+#include <iostream>
+#include <windows.h>
+
+
+
+int dane[6];
+int rozmiar;
+int wybor;
+
+
+void wyswietl_stos()
+{
+    system("CLS");
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
+
+    printf_s("");
+    printf_s("----------------\n");
+    printf_s("ZAWARTOSC STOSU:\n");
+    printf_s("----------------\n");
+
+    for (int i = rozmiar; i >= 1; i--)
+    {
+        printf_s("%d\n",dane[i]);
+    }
+
+    if (rozmiar == 0)
+        printf_s("pusty");
+
+    printf_s("----------------\n\n");
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+
+}    
+
+
+
+
+void push()
+{
+    if (rozmiar >= 5)
+    {
+        printf_s("Stos pelny!");
+    }
+    else
+    {
+        printf_s("\n");
+        printf_s("PUSH(jaka liczbe polozyc na stosie) : ");
+
+        rozmiar = rozmiar + 1;
+        scanf_s("%d",&dane[rozmiar]);
+    }
+}
+
+
+
+void pop()
+{
+    if (rozmiar >= 1)
+    {
+        printf_s("\n");
+        printf_s("POP - nastapi usuniecie ze stosu liczby: "); 
+       
+        Sleep(2000);
+
+        rozmiar = rozmiar - 1;
+    }
+    else
+    {
+        printf_s("Stos pusty!");
+        Sleep(1000);
+    }
+}
+
+void size()
+{
+    printf_s("\n");
+    printf_s("Liczba elementow na stosie: %d",dane[rozmiar]);
+   
+    Sleep(2000);
+}
+
+
+
+void empty()
+{
+
+    if (rozmiar == 0)
+    {
+        printf_s("\n"); 
+        printf_s("EMPTY (stos pusty?) ->  TRUE"); 
+    }
+
+    else
+    {
+        printf_s("\n");
+        printf_s("EMPTY (stos pusty?) ->  FALSE");
+        Sleep(2000);
+    }
+}
+
+
+
+
+int main()
+{
+
+    int wybor;
+    rozmiar = 0;
+
+    do
+    {
+        wyswietl_stos();
+
+        printf("MENU GLOWNE STOSU:\n");
+        printf_s("------------------------------------------\n");
+        printf_s("1. PUSH (dodaje element na szczyt stosu) \n");
+        printf_s("2. POP (usuwa element ze szczytu stosu) \n");
+        printf_s("3. SIZE (ile elementow na stosie) \n");
+        printf_s("4. EMPTY (czy stos jest pusty?) \n");
+        printf_s("5. Koniec programu \n");
+        printf_s("------------------------------------------\n");
+        printf_s("Wybor: ");
+        scanf_s("%d", &wybor);
+
+        switch (wybor)
+        {
+        case 1:
+            push();
+            break;
+
+        case 2:
+            pop();
+            break;
+
+        case 3:
+            size();
+            break;
+
+        case 4:
+            empty();
+            break;
+
+        }
+
+    } while (wybor != 5);
+
+    return 0;
+}
