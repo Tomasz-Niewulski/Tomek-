@@ -1,0 +1,113 @@
+
+#pragma warning(disable : 4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <ctime>
+#include <cstdlib>
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <string.h>
+#include <iostream>
+#include <ctype.h>
+float x, y;
+int wybor;
+float suma, roznica, iloraz, iloczyn;
+int main()
+
+{
+    time_t czas;
+
+    time(&czas);
+
+    char* data = ctime(&czas);
+
+    printf("Wprowadz 1 liczbe:\n"); scanf_s("%f", &x);
+    printf("Wprowadz 2 liczbe:\n"); scanf_s("%f", &y);
+
+
+    printf("MENU KALKULATORA\n");
+
+    printf("----------------\n");
+    printf("1-Dodawanie\n");
+    printf("2-Odejmowanie\n");
+    printf("3-Mnozenie\n");
+    printf("4-Dzielenie\n");
+
+    printf("Jakie dzialanie chcesz wykonac?\n"); scanf_s("%d", &wybor);
+    FILE* fptr;
+
+
+
+    fopen_s(&fptr, "log.txt", "a");
+
+
+
+    if (fptr == 0)
+
+    {
+
+        printf("Blad otwierania pliku\n");
+
+        exit(1);
+
+    }
+
+    switch (wybor)
+    {
+    case 1:
+        suma = x + y;
+
+        printf("Wynik dodawania to: %f", suma);
+        fprintf(fptr, "%sWykonano opercje %f %s %f\nWynik: %f\n\n", data, x, "suma", y, suma);
+
+        fclose(fptr);
+        break;
+
+    case 2:
+        roznica = x - y;
+        printf("wynik odejmowania to: %f", roznica);
+        fprintf(fptr, "%sWykonano opercje %f %s %f\nWynik: %f\n\n", data, x, "roznica", y, roznica);
+
+        fclose(fptr);       
+        break;
+    case 3:
+        iloraz = x * y;
+        printf("Wynik Mnozenia to: %f", iloraz);
+        fprintf(fptr, "%sWykonano opercje %f %s %f\nWynik: %f\n\n", data, x, "iloraz", y, iloraz);
+
+        fclose(fptr);
+        break;
+    case 4:
+        iloczyn = x / y;
+        if (y == 0)
+        {
+            printf("Nie dzielimy przez 0!");
+            fprintf(fptr, "%sNIE DZIELIMI PRZEZ ZERO!",data);
+        }
+        else {
+            printf("Wynik dzielenia to: %f", iloczyn);
+            fprintf(fptr, "%sWykonano opercje %f %s %f\nWynik: %f\n\n", data, x, "iloczyn", y, iloczyn);
+
+            fclose(fptr);
+        }
+        break;
+
+    default: printf("Takiej opcji nie ma w MENU");
+        break;
+    }
+    fclose(fptr);
+    return 0;
+}
+
+// Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
+// Debugowanie programu: F5 lub menu Debugowanie > Rozpocznij debugowanie
+
+// Porady dotyczące rozpoczynania pracy:
+//   1. Użyj okna Eksploratora rozwiązań, aby dodać pliki i zarządzać nimi
+//   2. Użyj okna programu Team Explorer, aby nawiązać połączenie z kontrolą źródła
+//   3. Użyj okna Dane wyjściowe, aby sprawdzić dane wyjściowe kompilacji i inne komunikaty
+//   4. Użyj okna Lista błędów, aby zobaczyć błędy
+//   5. Wybierz pozycję Projekt > Dodaj nowy element, aby utworzyć nowe pliki kodu, lub wybierz pozycję Projekt > Dodaj istniejący element, aby dodać istniejące pliku kodu do projektu
+//   6. Aby w przyszłości ponownie otworzyć ten projekt, przejdź do pozycji Plik > Otwórz > Projekt i wybierz plik sln
