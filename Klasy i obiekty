@@ -1,0 +1,271 @@
+#include <iostream>
+
+#include <string>
+
+
+
+class Circle
+
+{
+
+private:
+
+    static int c_numberOfCircles;
+
+    std::string c_name;
+
+    double c_centerX;
+
+    double c_centerY;
+
+    double c_radius;
+
+public:
+
+    static int numberOfCircles();
+
+    Circle();
+
+    Circle(const std::string& name, double x = 0, double y = 0, double r = 0);
+
+    ~Circle();
+
+    void setName(const std::string& name);
+
+    void setCircle(double x, double y, double r);
+
+    double getX();
+
+    double getY();
+
+    double getR();
+
+    double perimeter();
+
+    double field();
+
+    void show();
+
+
+
+};
+
+
+
+int Circle::c_numberOfCircles = 0;
+
+
+
+Circle::Circle()
+
+{
+
+    c_name = "noname";
+
+    c_centerX = 0;
+
+    c_centerY = 0;
+
+    c_radius = 0;
+
+    c_numberOfCircles++;
+
+}
+
+
+
+Circle::Circle(const std::string & name, double x, double y, double r)
+
+{
+
+    c_name = name;
+
+    c_centerX = x;
+
+    c_centerY = y;
+
+    c_radius = r;
+
+    c_numberOfCircles++;
+
+}
+
+
+
+Circle::~Circle()
+
+{
+
+    c_numberOfCircles--;
+
+}
+
+
+
+void Circle::setName(const std::string & name)
+
+{
+
+    c_name = name;
+
+}
+
+
+
+void Circle::setCircle(double x, double y, double r)
+
+{
+
+    c_centerX = x;
+
+    c_centerY = y;
+
+    c_radius = r;
+
+}
+
+
+
+double Circle::getX()
+
+{
+
+    return c_centerX;
+
+}
+
+
+
+double Circle::getY()
+
+{
+
+    return c_centerY;
+
+}
+
+
+
+double Circle::getR()
+
+{
+
+    return c_radius;
+
+}
+
+
+
+void Circle::show()
+
+{
+
+    std::cout << "Circle: " << c_name << " \tCenter point (" << c_centerX << "," << c_centerY << ") \tRadius = " << c_radius << std::endl;
+
+}
+
+
+
+double Circle::perimeter()
+
+{
+
+    return 3.14 * c_radius;
+
+}
+
+
+
+double Circle::field()
+
+{
+
+    return 2 * 3.14 * c_radius * c_radius;
+
+}
+
+
+
+int Circle::numberOfCircles()
+
+{
+
+    return c_numberOfCircles;
+
+}
+
+
+
+int main()
+
+{
+
+
+
+    std::cout << "Aktualna ilosc obiektow to: " << Circle::numberOfCircles() << std::endl;
+
+
+
+    Circle c1;
+
+    Circle c2("C_2");
+
+    Circle c3("C_3", 2, 3.5, 7);
+
+    Circle c4("C_4", 10, 15, 2);
+
+
+
+
+
+    c1.show();
+
+    c2.show();
+
+    c3.show();
+
+    c4.show();
+
+
+
+    std::cout << "Aktualna ilosc obiektow to: " << Circle::numberOfCircles() << std::endl;
+
+
+
+    {
+
+        Circle c5("C_4", 1, 1, 9);
+
+        c5.show();
+
+        std::cout << "Aktualna ilosc obiektow to: " << Circle::numberOfCircles() << std::endl;
+
+
+
+    }
+
+
+
+    std::cout << "Aktualna ilosc obiektow to: " << Circle::numberOfCircles() << std::endl;
+
+
+
+    std::cout << "Dane C_4: " << std::endl << "Wspolrzedna srodka X: " << c4.getX() << std::endl << "Wspolrzedna srodka Y: " << c4.getY() << std::endl << "Promien: " << c4.getR() << std::endl << "Obwod: " << c4.perimeter() << std::endl << "Pole: " << c4.field() << std::endl;
+
+
+
+    c1.~Circle();
+
+    c2.~Circle();
+
+    c3.~Circle();
+
+    c4.~Circle();
+
+
+
+    std::cout << "Aktualna ilosc obiektow to: " << Circle::numberOfCircles() << std::endl;
+
+
+
+}
