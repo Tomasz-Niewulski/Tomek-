@@ -1,0 +1,124 @@
+
+
+
+#include <iostream>
+#include <string>
+#include <cmath>
+
+class Vector2D;
+typedef const Vector2D v;
+
+class Vector2D
+{
+private:
+    double _x;
+    double _y;
+public:
+    Vector2D();
+    Vector2D(double x, double y);
+    ~Vector2D();
+    double getX();
+    double getY();
+    void setX(double value);
+    void setY(double value);
+    void show();
+    friend bool operator==(Vector2D& a, Vector2D& b);
+    friend Vector2D operator+(Vector2D a, Vector2D b);
+    friend Vector2D operator-(Vector2D a, Vector2D b);
+};
+
+Vector2D::Vector2D() {
+    _x = 0;
+    _y = 0;
+}
+
+Vector2D::Vector2D(double x, double y) {
+    _x = x;
+    _y = y;
+}
+
+Vector2D::~Vector2D() {}
+
+double Vector2D::getX() {
+    return _x;
+}
+
+double Vector2D::getY() {
+    return _y;
+}
+
+void Vector2D::setX(double value) {
+    _x = value;
+}
+
+void Vector2D::setY(double value) {
+    _y = value;
+}
+
+void Vector2D::show()
+{
+    std::cout << "Vector: [" << _x << "," << _y << "]" << std::endl;
+}
+
+bool operator==(Vector2D& a, Vector2D& b)
+{
+    if (a.getX() != b.getX()) {
+        return false;
+    }
+    if (a.getY() != b.getY()) {
+        return false;
+    }
+    return true;
+}
+
+Vector2D operator+(Vector2D a, Vector2D b)
+{
+    double _x, _y;
+    _x = a.getX() + b.getX();
+    _y = a.getY() + b.getY();
+    Vector2D v = Vector2D(_x, _y);
+    return v;
+}
+
+Vector2D operator-(Vector2D a, Vector2D b)
+{
+    double _x, _y;
+    _x = a.getX() - b.getX();
+    _y = a.getY() - b.getY();
+    Vector2D v = Vector2D(_x, _y);
+    return v;
+}
+
+int main()
+{
+    Vector2D v1;
+    Vector2D v2(1, 2);
+    Vector2D v3(1, 2);
+    Vector2D v4(2, 1);
+    Vector2D v5(1, 1);
+
+    v1.show();
+    v2.show();
+    v3.show();
+    v4.show();
+    v5.show();
+
+    if (v2 == v3) {
+        std::cout << "v2 is equal to v3" << std::endl;
+    }
+    if (!(v2 == v4)) {
+        std::cout << "v2 is not equal to v4" << std::endl;
+    }
+    if (!(v2 == v5)) {
+        std::cout << "v2 is not equal to v5" << std::endl;
+    }
+
+    Vector2D v6 = v2 + v3;
+    std::cout << "v2 + v3: " << std::endl;
+    v6.show();
+    std::cout << "v2 - v3: " << std::endl;
+    Vector2D v7 = v2 - v3;
+    v7.show();
+
+    system("pause");
+}
